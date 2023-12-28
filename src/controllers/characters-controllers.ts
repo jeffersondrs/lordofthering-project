@@ -3,7 +3,7 @@ import { Character } from "../types/global-types";
 import CharacterModel from "../models/characters-model";
 
 export const getCharacters = async (req: Request, res: Response) => {
-  const characters = await CharacterModel.find();
+  const characters = await CharacterModel.find().sort({ name: 1});
   res.json({ characters });
 };
 
