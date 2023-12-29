@@ -26,3 +26,21 @@ export const createBook = async (req: Request, res: Response) => {
 
   res.json({ book });
 };
+
+export const updateBook = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  await BookModel.findByIdAndUpdate(id, req.body);
+
+  res.json({ message: "Livro atualizado com sucesso" });
+
+}
+
+export const deleteBook = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  await BookModel.findByIdAndDelete(id);
+
+  res.json({ message: "Livro deletado com sucesso" });
+}
+
+
+

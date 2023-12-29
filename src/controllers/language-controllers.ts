@@ -26,3 +26,18 @@ export const createLanguage = async (req: Request, res: Response) => {
   res.json({ language });
 }
 
+export const updateLanguage = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await LanguageModel.findByIdAndUpdate(id, req.body);
+
+  res.json({ message: "Linguagem atualizada com sucesso" });
+}
+
+export const deleteLanguage = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await LanguageModel.findByIdAndDelete(id);
+
+  res.json({ message: "Linguagem deletada com sucesso" });
+}

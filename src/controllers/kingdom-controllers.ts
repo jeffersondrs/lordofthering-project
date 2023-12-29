@@ -32,3 +32,18 @@ export const createKingdom = async (req: Request, res: Response) => {
   res.json({ kingdom });
 };
 
+export const updateKingdom = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await KingdomModel.findByIdAndUpdate(id, req.body);
+
+  res.json({ message: "Reino atualizado com sucesso" });
+}
+
+export const deleteKingdom = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await KingdomModel.findByIdAndDelete(id);
+
+  res.json({ message: "Reino deletado com sucesso" });
+}

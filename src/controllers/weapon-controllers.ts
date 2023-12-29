@@ -25,3 +25,19 @@ export const createWeapon = async (req: Request, res: Response) => {
 
   res.json({ weapon });
 };
+
+export const updateWeapon = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await WeaponModel.findByIdAndUpdate(id, req.body);
+
+  res.json({ message: "Arma atualizada com sucesso" });
+};
+
+export const deleteWeapon = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await WeaponModel.findByIdAndDelete(id);
+
+  res.json({ message: "Arma deletada com sucesso" });
+};

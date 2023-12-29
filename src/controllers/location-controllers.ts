@@ -25,3 +25,19 @@ export const createLocation = async (req: Request, res: Response) => {
 
   res.json({ location });
 };
+
+export const updateLocation = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await LocationModel.findByIdAndUpdate(id, req.body);
+
+  res.json({ message: "Localização atualizada com sucesso" });
+}
+
+export const deleteLocation = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await LocationModel.findByIdAndDelete(id);
+
+  res.json({ message: "Localização deletada com sucesso" });
+}

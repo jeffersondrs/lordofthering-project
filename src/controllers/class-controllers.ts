@@ -25,3 +25,19 @@ export const createClass = async (req: Request, res: Response) => {
 
   res.json({ classes });
 }
+
+export const updateClass = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await ClassModel.findByIdAndUpdate(id, req.body);
+
+  res.json({ message: "Classe atualizada com sucesso" });
+}
+
+export const deleteClass = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await ClassModel.findByIdAndDelete(id);
+
+  res.json({ message: "Classe deletada com sucesso" });
+}

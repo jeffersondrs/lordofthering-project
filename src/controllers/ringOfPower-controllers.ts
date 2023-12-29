@@ -25,3 +25,19 @@ export const createRingOfPower = async (req: Request, res: Response) => {
 
   res.json({ ringOfPower });
 };
+
+export const updateRingOfPower = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await RingOfPowerModel.findByIdAndUpdate(id, req.body);
+
+  res.json({ message: "Anel atualizado com sucesso" });
+};
+
+export const deleteRingOfPower = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  await RingOfPowerModel.findByIdAndDelete(id);
+
+  res.json({ message: "Anel deletado com sucesso" });
+};

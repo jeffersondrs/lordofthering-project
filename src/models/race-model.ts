@@ -19,6 +19,6 @@ const raceSchema = new mongoose.Schema({
   },
 });
 
-const RacaModel = mongoose.model<Raca>("Raca", raceSchema);
+const RaceModel = mongoose.model<Raca>("Raca", raceSchema);
 
-export { RacaModel };
+export { RaceModel };

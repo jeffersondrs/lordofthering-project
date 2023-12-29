@@ -51,6 +51,65 @@ export const getCharactersByClass = async (req: Request, res: Response) => {
   res.json({ classId, charactersByClass });
 };
 
+export const getCharactersByBook = async (req: Request, res: Response) => {
+  const bookId = req.params.id;
+
+  const charactersByBook = await CharacterModel.find({ book_id: bookId });
+
+  res.json({ bookId, charactersByBook });
+};
+
+export const getCharactersByKingdom = async (req: Request, res: Response) => {
+  const kingdomId = req.params.id;
+
+  const charactersByKingdom = await CharacterModel.find({
+    kingdom_id: kingdomId,
+  });
+
+  res.json({ kingdomId, charactersByKingdom });
+};
+
+export const getCharactersByLanguage = async (req: Request, res: Response) => {
+  const languageId = req.params.id;
+
+  const charactersByLanguage = await CharacterModel.find({
+    language_id: languageId,
+  });
+
+  res.json({ languageId, charactersByLanguage });
+};
+
+export const getCharactersByLocation = async (req: Request, res: Response) => {
+  const locationId = req.params.id;
+
+  const charactersByLocation = await CharacterModel.find({
+    location_id: locationId,
+  });
+
+  res.json({ locationId, charactersByLocation });
+};
+
+export const getCharactersByRingOfPower = async (
+  req: Request,
+  res: Response
+) => {
+  const ringOfPowerId = req.params.id;
+
+  const charactersByRingOfPower = await CharacterModel.find({
+    ringOfPower_id: ringOfPowerId,
+  });
+
+  res.json({ ringOfPowerId, charactersByRingOfPower });
+};
+
+export const getCharactersByWeapon = async (req: Request, res: Response) => {
+  const weaponId = req.params.id;
+
+  const charactersByWeapon = await CharacterModel.find({ weapon_id: weaponId });
+
+  res.json({ weaponId, charactersByWeapon });
+};
+
 export const createCharacter = async (req: Request, res: Response) => {
   const {
     name,
@@ -65,6 +124,16 @@ export const createCharacter = async (req: Request, res: Response) => {
     location_id,
     ringOfPower_id,
     weapon_id,
+    death,
+    birth,
+    daughter,
+    son,
+    father,
+    mother,
+    hair_color,
+    history,
+    skin_color,
+    spouse,
   } = req.body as Character;
 
   const characterExist = await CharacterModel.findOne({ name });
@@ -88,6 +157,16 @@ export const createCharacter = async (req: Request, res: Response) => {
     location_id,
     ringOfPower_id,
     weapon_id,
+    death,
+    birth,
+    daughter,
+    son,
+    father,
+    mother,
+    hair_color,
+    spouse,
+    skin_color,
+    history,
   });
 
   res.json({ character });
