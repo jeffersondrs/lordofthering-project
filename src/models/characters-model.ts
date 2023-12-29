@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import { Schema, model } from "mongoose";
 import { Character } from "../types/global-types";
 
-const characterSchema = new mongoose.Schema({
+const characterSchema = new Schema({
   name: {
     type: String,
     required: [true, "O personagem precisa ter um nome"],
@@ -15,13 +15,43 @@ const characterSchema = new mongoose.Schema({
     required: [true, "O personagem precisa ter um status"],
   },
   race_id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "Raca",
     required: true,
   },
   class_id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "Class",
+    required: false,
+  },
+  kingdom_id: {
+    type: Schema.Types.ObjectId,
+    ref: "Kingdom",
+    required: false,
+  },
+  location_id: {
+    type: Schema.Types.ObjectId,
+    ref: "Location",
+    required: false,
+  },
+  book_id: {
+    type: Schema.Types.ObjectId,
+    ref: "Book",
+    required: false,
+  },
+  ringOfPower_id: {
+    type: Schema.Types.ObjectId,
+    ref: "RingOfPower",
+    required: false,
+  },
+  language_id: {
+    type: Schema.Types.ObjectId,
+    ref: "Language",
+    required: false,
+  },
+  weapon_id: {
+    type: Schema.Types.ObjectId,
+    ref: "Weapon",
     required: false,
   },
   image: {
@@ -36,6 +66,6 @@ const characterSchema = new mongoose.Schema({
     type: Date,
   },
 });
-const CharacterModel = mongoose.model<Character>("Character", characterSchema);
+const CharacterModel = model<Character>("Character", characterSchema);
 
 export { CharacterModel };

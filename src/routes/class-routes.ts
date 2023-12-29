@@ -3,7 +3,7 @@ import {
   getClasses,
   getClassById,
   createClass,
-} from "../controllers/class-controller";
+} from "../controllers/class-controllers";
 
 const classRouter = Router();
 

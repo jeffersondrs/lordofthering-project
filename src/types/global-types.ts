@@ -4,6 +4,12 @@ export type Character = {
   image: string;
   race_id: Raca;
   class_id: Class;
+  weapon_id: Weapon;
+  ringOfPower_id: RingOfPower;
+  kingdom_id: Kingdom;
+  location_id: Location;
+  language_id: Language;
+  book_id: Book;
   status: string;
   createdAt: Date;
   id: string;
@@ -26,3 +32,56 @@ export type Class = {
   id: string;
   updatedAt: Date;
 };
+
+export type Book = {
+  title: string;
+  description: string;
+  image: string;
+  createdAt: Date;
+  id: string;
+  updatedAt: Date;
+}
+
+export type Kingdom = {
+  name: string;
+  description: string;
+  createdAt: Date;
+  id: string;
+  updatedAt: Date;
+}
+
+export type Language = {
+  name: string;
+  description: string;
+  createdAt: Date;
+  id: string;
+  updatedAt: Date;
+}
+
+export type RingOfPower = {
+  name: string;
+  description: string;
+  createdAt: Date;
+  id: string;
+  updatedAt: Date;
+  images: string;
+}
+
+export type Weapon = {
+  name: string;
+  description: string;
+  createdAt: Date;
+  id: string;
+  updatedAt: Date;
+  images: string;
+}
+
+export type Location = {
+  name: string;
+  description: string;
+  createdAt: Date;
+  id: string;
+  updatedAt: Date;
+  images: string;
+}
+

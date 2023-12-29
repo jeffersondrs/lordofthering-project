@@ -3,7 +3,7 @@ import {
   getRacas,
   getRacaById,
   createRaca,
-} from "../controllers/race-controller";
+} from "../controllers/race-controllers";
 
 const raceRouter = Router();
 

@@ -19,6 +19,4 @@ userRouter.post("/characters", createCharacter);
 userRouter.put("/characters/:id", updateCharacter);
 userRouter.delete("/characters/:id", deleteCharacter);
 
-
-
 export { userRouter };

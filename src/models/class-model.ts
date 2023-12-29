@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import { Schema, model } from "mongoose";
 import { Class } from "../types/global-types";
 
-const classSchema = new mongoose.Schema({
+const classSchema = new Schema({
   name: {
     type: String,
     required: [true, "A classe precisa ter um nome"],
@@ -19,6 +19,6 @@ const classSchema = new mongoose.Schema({
   },
 });
 
-const ClassModel = mongoose.model<Class>("Class", classSchema);
+const ClassModel = model<Class>("Class", classSchema);
 
 export { ClassModel };

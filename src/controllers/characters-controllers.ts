@@ -3,14 +3,31 @@ import { Character } from "../types/global-types";
 import { CharacterModel } from "../models/characters-model";
 
 export const getCharacters = async (req: Request, res: Response) => {
-  const characters = await CharacterModel.find().sort({ name: 1 }).populate("race_id").populate("class_id");
+  const characters = await CharacterModel.find()
+    .sort({ name: 1 })
+    .populate("race_id")
+    .populate("class_id")
+    .populate("book_id")
+    .populate("kingdom_id")
+    .populate("language_id")
+    .populate("location_id")
+    .populate("ringOfPower_id")
+    .populate("weapon_id");
   res.json({ characters });
 };
 
 export const getCharacterById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  const character = await CharacterModel.findById(id);
+  const character = await CharacterModel.findById(id)
+    .populate("race_id")
+    .populate("class_id")
+    .populate("book_id")
+    .populate("kingdom_id")
+    .populate("language_id")
+    .populate("location_id")
+    .populate("ringOfPower_id")
+    .populate("weapon_id");
 
   res.json({ character });
 };
@@ -32,8 +49,20 @@ export const getCharactersByClass = async (req: Request, res: Response) => {
 };
 
 export const createCharacter = async (req: Request, res: Response) => {
-  const { name, description, race_id, status, image, class_id } =
-    req.body as Character;
+  const {
+    name,
+    description,
+    race_id,
+    status,
+    image,
+    class_id,
+    book_id,
+    kingdom_id,
+    language_id,
+    location_id,
+    ringOfPower_id,
+    weapon_id,
+  } = req.body as Character;
 
   const characterExist = await CharacterModel.findOne({ name });
 
@@ -50,6 +79,12 @@ export const createCharacter = async (req: Request, res: Response) => {
     status,
     description,
     class_id,
+    book_id,
+    kingdom_id,
+    language_id,
+    location_id,
+    ringOfPower_id,
+    weapon_id,
   });
 
   res.json({ character });
