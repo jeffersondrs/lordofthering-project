@@ -5,29 +5,32 @@ import { CharacterModel } from "../models/characters-model";
 export const getCharacters = async (req: Request, res: Response) => {
   const characters = await CharacterModel.find()
     .sort({ name: 1 })
-    .populate("race_id")
-    .populate("class_id")
-    .populate("book_id")
-    .populate("kingdom_id")
-    .populate("language_id")
-    .populate("location_id")
-    .populate("ringOfPower_id")
-    .populate("weapon_id");
+    .populate([
+      "ringOfPower_id",
+      "race_id",
+      "class_id",
+      "book_id",
+      "kingdom_id",
+      "language_id",
+      "location_id",
+      "weapon_id",
+    ]);
   res.json({ characters });
 };
 
 export const getCharacterById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  const character = await CharacterModel.findById(id)
-    .populate("race_id")
-    .populate("class_id")
-    .populate("book_id")
-    .populate("kingdom_id")
-    .populate("language_id")
-    .populate("location_id")
-    .populate("ringOfPower_id")
-    .populate("weapon_id");
+  const character = await CharacterModel.findById(id).populate([
+    "ringOfPower_id",
+    "race_id",
+    "class_id",
+    "book_id",
+    "kingdom_id",
+    "language_id",
+    "location_id",
+    "weapon_id",
+  ]);
 
   res.json({ character });
 };
