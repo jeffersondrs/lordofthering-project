@@ -4,7 +4,8 @@
   "description": "API for lord of the ring fans",
   "main": "src/server.ts",
   "scripts": {
-    "dev": "nodemon src/server.ts"
+    "dev": "nodemon src/server.ts",
+    "start": "tsc && npx prisma generate"
   },
   "keywords": [
     "LOTR",

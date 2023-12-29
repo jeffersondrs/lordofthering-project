@@ -14,9 +14,15 @@ const characterSchema = new mongoose.Schema({
     type: String,
     required: [true, "O personagem precisa ter um status"],
   },
-  race: {
-    type: String,
-    required: [true, "O personagem precisa ter uma raça"],
+  raca_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Raca",
+    required: false,
+  },
+  class_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Class",
+    required: false,
   },
   image: {
     type: String,

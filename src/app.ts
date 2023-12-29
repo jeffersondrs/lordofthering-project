@@ -2,7 +2,9 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
-import { router } from "./routes/routers";
+import { userRouter } from "./routes/user-routes";
+import { raceRouter } from "./routes/race-routes";
+import { classRouter } from "./routes/class-routes";
 
 const app = express();
 
@@ -16,6 +18,8 @@ app.use("/api", (req, res) => {
   res.json({ message: "Hello World dasss " });
 });
 
-app.use(router);
+app.use("/char", userRouter);
+app.use("/race", raceRouter);
+app.use("/class", classRouter);
 
 export default app;

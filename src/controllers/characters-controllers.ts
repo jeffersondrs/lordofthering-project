@@ -3,7 +3,7 @@ import { Character } from "../types/global-types";
 import CharacterModel from "../models/characters-model";
 
 export const getCharacters = async (req: Request, res: Response) => {
-  const characters = await CharacterModel.find().sort({ name: 1});
+  const characters = await CharacterModel.find().sort({ name: 1 });
   res.json({ characters });
 };
 
@@ -16,7 +16,8 @@ export const getCharacterById = async (req: Request, res: Response) => {
 };
 
 export const createCharacter = async (req: Request, res: Response) => {
-  const { name, description, race, status, image } = req.body as Character;
+  const { name, description, race_id, status, image, class_id } =
+    req.body as Character;
 
   const characterExist = await CharacterModel.findOne({ name });
 
@@ -27,9 +28,10 @@ export const createCharacter = async (req: Request, res: Response) => {
   const character = await CharacterModel.create({
     name,
     image,
-    race,
+    race_id,
     status,
     description,
+    class_id,
   });
 
   res.json({ character });
