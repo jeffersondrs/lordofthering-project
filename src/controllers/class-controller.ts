@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import ClassModel from "../models/class-model";
+import {ClassModel} from "../models/class-model";
 import { Class } from "../types/global-types";
 
 export const getClasses = async (req: Request, res: Response) => {

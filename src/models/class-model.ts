@@ -21,4 +21,4 @@ const classSchema = new mongoose.Schema({
 
 const ClassModel = mongoose.model<Class>("Class", classSchema);
 
-export default ClassModel;
+export { ClassModel };

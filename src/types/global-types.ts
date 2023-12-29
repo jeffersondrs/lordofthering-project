@@ -2,8 +2,8 @@ export type Character = {
   name: string;
   description: string;
   image: string;
-  race_id: string;
-  class_id: string;
+  race_id: Raca;
+  class_id: Class;
   status: string;
   createdAt: Date;
   id: string;

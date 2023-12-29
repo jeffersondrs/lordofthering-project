@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { Character } from "../types/global-types";
-import CharacterModel from "../models/characters-model";
+import { CharacterModel } from "../models/characters-model";
 
 export const getCharacters = async (req: Request, res: Response) => {
-  const characters = await CharacterModel.find().sort({ name: 1 });
+  const characters = await CharacterModel.find().sort({ name: 1 }).populate("race_id").populate("class_id");
   res.json({ characters });
 };
 
@@ -15,6 +15,22 @@ export const getCharacterById = async (req: Request, res: Response) => {
   res.json({ character });
 };
 
+export const getCharactersByRace = async (req: Request, res: Response) => {
+  const raceId = req.params.id;
+
+  const charactersByRace = await CharacterModel.find({ race_id: raceId });
+
+  res.json({ raceId, charactersByRace });
+};
+
+export const getCharactersByClass = async (req: Request, res: Response) => {
+  const classId = req.params.id;
+
+  const charactersByClass = await CharacterModel.find({ class_id: classId });
+
+  res.json({ classId, charactersByClass });
+};
+
 export const createCharacter = async (req: Request, res: Response) => {
   const { name, description, race_id, status, image, class_id } =
     req.body as Character;
@@ -22,7 +38,9 @@ export const createCharacter = async (req: Request, res: Response) => {
   const characterExist = await CharacterModel.findOne({ name });
 
   if (characterExist) {
-    return res.status(400).json({ message: "Personagem já existe" });
+    return res
+      .status(400)
+      .json({ message: "Personagem já existe", characterExist });
   }
 
   const character = await CharacterModel.create({

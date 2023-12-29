@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import RacaModel from "../models/race-model";
+import {RacaModel} from "../models/race-model";
 import { Raca } from "../types/global-types";
 
 export const getRacas = async (req: Request, res: Response) => {

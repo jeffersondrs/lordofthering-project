@@ -14,10 +14,10 @@ const characterSchema = new mongoose.Schema({
     type: String,
     required: [true, "O personagem precisa ter um status"],
   },
-  raca_id: {
+  race_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Raca",
-    required: false,
+    required: true,
   },
   class_id: {
     type: mongoose.Schema.Types.ObjectId,
@@ -38,4 +38,4 @@ const characterSchema = new mongoose.Schema({
 });
 const CharacterModel = mongoose.model<Character>("Character", characterSchema);
 
-export default CharacterModel;
+export { CharacterModel };
