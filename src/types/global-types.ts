@@ -1,16 +1,14 @@
 export type Character = {
   name: string;
   description: string;
-  hair_color?: string;
+  history?: string;
+  status?: string;
   father?: string;
   mother?: string;
+  spouse?: string;
   birth?: string;
   death: string;
-  daughter?: string[];
-  son?: string;
-  spouse?: string;
-  history?: string;
-  skin_color?: string;
+  sons_id?: string[];
   image?: string;
   race_id?: Raca;
   class_id?: Class;
@@ -19,8 +17,7 @@ export type Character = {
   kingdom_id?: Kingdom;
   location_id?: Location;
   language_id?: Language;
-  book_id?: Book;
-  status?: string;
+  book_id?: Book[];
   createdAt: Date;
   id: string;
   updatedAt: Date;
